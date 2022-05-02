@@ -1,0 +1,3 @@
+W bazie danych posiadam wszystkie karty, natomiast problem jest takiej natury, że, baza danych jest dostępna dla każdej osoby. 
+Czyli jeżeli mamy 5 osób, jedna z nich coś kupi, powinan móc ona zobaczyć to w eq, nie powinna ona móc tego zobaczyć w swoim sklepie, ale powinno być to dalej dostepne w bazie danych. 
+Przykładem rozwiązania tego problemu jest stworzenie w bazie danych zmiennej, która mówi co użytkownik kupił (osobna tabela która ma tyle samo rekordów id, co ilośc produktów, ale to bez sensu, bo trzeba by ciągle tworzyć nowe tabele) 

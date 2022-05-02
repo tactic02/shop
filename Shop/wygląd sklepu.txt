@@ -1,0 +1,2 @@
+W lewym górnym rogu widać nazwę uzytkownika, w prawym górnym rogu ilośc posiadanych przez niego pieniędzy, możliwość przeniesienia się do strony, gdzie są pokazywane wszystkie posiadane przez niego karty, oraz możliwośc wylogowania się.
+Niżej użytkownik będzie ma wyświetloną przez niego wybraną ilość kart i sprawdza się z pomoca maski wartości

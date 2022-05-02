@@ -1,0 +1,8 @@
+System logowania który będzie działał z bazą danych
+Klasa która pozwala użytkownikowi wpisać dane do logowania, i sprawdzić czy sa poprawne z czymkolwiek z bazy danych
+Klasa która pozwala sie użytkownikowi zalogować
+Baza danych powinna przechowywać ilośc pieniędzy posiadanych przez użytkownika
+Po zalogowaniu użytkiownik może sie wylogować, albo cos kupic
+Jezeli chce coś kupić, to sprawdzane jest, czy ma wystarczającą ilośc pieniedzy, jeśli ma, to cos kupuje, i dodaje to do swojej klasy
+Jesli nie, to komunikat że go nie stać
+Koniec

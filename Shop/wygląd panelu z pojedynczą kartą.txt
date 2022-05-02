@@ -1,0 +1,3 @@
+wygląd karty
+jej cena
+kliknięcie przycisku kupna
