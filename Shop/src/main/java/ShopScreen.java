@@ -9,14 +9,15 @@ import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
 public class ShopScreen {
-    UsersWhichCurrentlyUseShop usersWhichCurrentlyUseShop;
-    PropertiesAboutProductsOnScreen propertiesAboutProducts;
-    OperationOnProductsFromBase operationOnProductsFromBase;
-    OperationOnAllUsers operationOnAllUsers;
-    LoginPanel loginPanel;
-    Equpiment equpiment;
+    private UsersWhichCurrentlyUseShop usersWhichCurrentlyUseShop;
+    private PropertiesAboutProductsOnScreen propertiesAboutProducts;
+    private OperationOnProductsFromBase operationOnProductsFromBase;
+    private OperationOnAllUsers operationOnAllUsers;
+    private LoginPanel loginPanel;
+    private Equpiment equpiment;
     private final int WINDOW_WIDTH = 800;
-    private final int WINDOW_HEIGHT = 100;
+    private final int WINDOW_HEIGHT = 180;
+    private final int ADDITIONAL_HEIGHT_FOR_ROW = 180;
     private final int AMOUNT_OF_PROCUTS_IN_ROW = 5;
     private int amountOfRow = 0;
     private JFrame jFrame;
@@ -65,6 +66,7 @@ public class ShopScreen {
         userMoney = new JLabel();
         usersNickname = new JLabel();
         FirstPartOftextWhenUserHaveNoProductsToBuy = new JLabel();
+        SecondPartOftextWhenUserHaveNoProductsToBuy = new JLabel();
         currentQuestionFromBase = 0;
         setjFrame();
         setGoToEq();
@@ -72,6 +74,7 @@ public class ShopScreen {
         setUserMoeny();
         setUsersNickname();
         setFirstParOfTextWhenUserHaveNoProductsToBuy();
+        setSecondPartOftextWhenUserHaveNoProductsToBuy();
         setUsersPanel();
         setOptionOfSortCarts();
         setAmountOfCardOnScreen();
@@ -157,15 +160,20 @@ public class ShopScreen {
     }
 
     public void setFirstParOfTextWhenUserHaveNoProductsToBuy() {
-        FirstPartOftextWhenUserHaveNoProductsToBuy.setText("YOU BOUGHT ALL PRODUCTS");
+        FirstPartOftextWhenUserHaveNoProductsToBuy.setText("YOU BOUGHT ");
         FirstPartOftextWhenUserHaveNoProductsToBuy.setFont(new Font("Arial", Font.PLAIN, 50));
+    }
+
+    public void setSecondPartOftextWhenUserHaveNoProductsToBuy(){
+        SecondPartOftextWhenUserHaveNoProductsToBuy.setText("ALL PRODUCTS");
+        SecondPartOftextWhenUserHaveNoProductsToBuy.setFont(new Font("Arial", Font.PLAIN, 50));
     }
 
     private void changesSizeOfShopScreenWindow() {
         if (amountOfRow > 0) {
-            jFrame.setSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT + amountOfRow * 200));
+            jFrame.setSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT + amountOfRow * ADDITIONAL_HEIGHT_FOR_ROW));
         } else if (amountOfRow == 0) {
-            jFrame.setSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT + 200));
+            jFrame.setSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT + ADDITIONAL_HEIGHT_FOR_ROW));
         }
         jFrame.revalidate();
         jFrame.repaint();
@@ -250,15 +258,21 @@ public class ShopScreen {
         if (amountOfRow != 0) {
             for (int i = 0; listOfItems.size() > i; i++) {
                 if (i % AMOUNT_OF_PROCUTS_IN_ROW == 4) {
-                    jFrame.add(listOfItems.get(i), "gapleft 10, wrap 30");
+                    jFrame.add(listOfItems.get(i), "gapleft 10, wrap 40");
                 } else if (listOfItems.size() - i == 1) {
-                    jFrame.add(listOfItems.get(i), "wrap 80");
+                    jFrame.add(listOfItems.get(i), "wrap 40");
                 } else {
                     jFrame.add(listOfItems.get(i), "gapleft 10");
                 }
             }
-        } else {
-            jFrame.add(FirstPartOftextWhenUserHaveNoProductsToBuy);
+        }
+        else if (amountOfRow == 0 && propertiesAboutProducts.getCurrentPage() == 0) {
+            jFrame.add(FirstPartOftextWhenUserHaveNoProductsToBuy, "wrap 40");
+            jFrame.add(SecondPartOftextWhenUserHaveNoProductsToBuy);
+        }
+        else {
+            propertiesAboutProducts.previousPage();
+            inicializeShopClass();
         }
         jFrame.add(usersPanel, "dock north");
         jFrame.add(settingOfWindowPanel, "dock west");
