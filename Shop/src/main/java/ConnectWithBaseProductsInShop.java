@@ -12,7 +12,7 @@ public abstract class ConnectWithBaseProductsInShop {
         try {
             url = "jdbc:mysql://localhost:3306/products_in_shop";
             login = "root";
-            password = "MYSQLBase0!";
+            password = "root";
             conn = DriverManager.getConnection(url, login, password);
             stst = conn.createStatement();
         } catch (Exception e) {

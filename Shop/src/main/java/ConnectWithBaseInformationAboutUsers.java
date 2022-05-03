@@ -14,7 +14,7 @@ public abstract class ConnectWithBaseInformationAboutUsers {
     public ConnectWithBaseInformationAboutUsers(){
         try {
             url = "jdbc:mysql://localhost:3306/information_about_users";
-            password = "MYSQLBase0!";
+            password = "root";
             login = "root";
             conn = DriverManager.getConnection(url, login, password);
             stst = conn.createStatement();
